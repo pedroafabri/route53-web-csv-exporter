@@ -4,9 +4,20 @@ on:
     tags:
       - '*'
 jobs:
-  build-asset:
-    name: Build
+  push-tag:
+    name: Create Tag
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Create Tag
+        run: |
+          git tag $(git rev-parse --short HEAD) &&
+          git push origin $(git rev-parse --short HEAD)
+  build-asset:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    needs: push-tag
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,4 +33,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: dist/export53.min.js
+          tag_name: $(git rev-parse --short HEAD)
         

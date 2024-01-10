@@ -1,8 +1,9 @@
 name: upload-asset
 on: 
+  workflow_dispatch:
   push:
-    tags:
-      - '*'
+    branches:
+      - 'main'
 jobs:
   push-tag:
     name: Create Tag

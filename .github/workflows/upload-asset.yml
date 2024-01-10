@@ -28,7 +28,7 @@ jobs:
   release:
     name: Release
     needs: build
-    runs-on: ubuntu-latests
+    runs-on: ubuntu-latest
     steps:
       - name: Setup GIT
         uses: actions/setup-git@v2

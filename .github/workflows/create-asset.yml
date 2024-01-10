@@ -2,7 +2,7 @@ name: create-asset
 on: 
   push:
     branches:
-      - master
+      - main
 jobs:
   build-asset:
     name: Build

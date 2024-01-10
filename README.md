@@ -30,18 +30,23 @@ export53(options)
 
 `options` is an object that accepts the following parameters:
 
-#### className
+### className
 
 The class name of every <tr> on the table of records.
-If the AWS someday change this class name, you can use the HTML Inspector of the Dev Console to discover the class used for every <tr> on the table of records and pass the new class name as a parameter.
+
+If amazon someday change this class name, you can use the HTML Inspector of the Dev Console to discover the class used for every <tr> on the table of records and pass the new class name as a parameter.
 
 **Default:** awsui_row_wih1l_15664_301
 
-#### filename
+---
+
+### filename
 
 The name of the csv file that will be downloaded.
 
 **Default:** export_53.csv
+
+---
 
 # "Build"
 

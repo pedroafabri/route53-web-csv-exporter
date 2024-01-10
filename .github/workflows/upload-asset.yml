@@ -6,7 +6,7 @@ on:
       - 'main'
 jobs:
   build:
-    name: Build
+    name: Build & Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -19,24 +19,8 @@ jobs:
         run: pnpm install
       - name: Build asset
         run: pnpm build
-      - name: Configure Git identity
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-      - name: Create Tag
-        run: pnpm release
-  release:
-    name: Release
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get the latest tag
-        id: get_tag
-        run: echo "::set-output name=TAG_NAME::$(git describe --tags --abbrev=0)"
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/export53.min.js
-          tag_name: ${{ steps.get_tag.outputs.TAG_NAME }}
-          title: Release ${{ steps.get_tag.outputs.TAG_NAME }}
+      - name: Release
+        run: gh release create $(node -p -e "require('./package.json').version") ./dist/export53.min.js
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

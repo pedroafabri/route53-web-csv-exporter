@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup NodeJS and PNPM
         uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
       - name: Install dependencies
         run: |
           pnpm install

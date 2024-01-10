@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   push-tag:
-    name: Build
+    name: Create Tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code

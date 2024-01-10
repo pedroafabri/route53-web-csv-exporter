@@ -15,11 +15,11 @@ jobs:
         with:
           version: 'latest'
       - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm install
       - name: Build asset
-        run: |
-          pnpm build
+        run: pnpm build
+      - name: Create Tag
+        run: git tag $(git rev-parse --short HEAD)
       - name: Release Asset
         uses: softprops/action-gh-release@v1
         with:

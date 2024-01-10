@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "create-dist": "rm -rf dist && mkdir dist",
+    "minify": "uglifyjs src/export53.js -c -o dist/export53.min.js",
+    "build": "npm run create-dist && npm run minify"
+  },
+  "dependencies": {
+    "uglify-js": "^3.17.4"
+  }
+}

@@ -1,9 +1,8 @@
-name: create-asset
+name: upload-asset
 on: 
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 jobs:
   build-asset:
     name: Build
@@ -19,10 +18,6 @@ jobs:
         run: pnpm install
       - name: Build asset
         run: pnpm build
-      - name: Create Tag
-        run: |
-          git tag $(git rev-parse --short HEAD)
-          git push origin $(git rev-parse --short HEAD)
       - name: Release Asset
         uses: softprops/action-gh-release@v1
         with:

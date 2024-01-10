@@ -30,8 +30,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Setup GIT
-        uses: actions/setup-git@v2
       - name: Get the latest tag
         id: get_tag
         run: echo "::set-output name=TAG_NAME::$(git describe --tags --abbrev=0)"
